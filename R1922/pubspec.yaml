@@ -1,0 +1,78 @@
+name: radio1922
+description: Radio App.
+publish_to: 'Global Day Studio'
+version: 1.1.3+13
+
+environment:
+  sdk: '>=3.1.0 <4.0.0'
+
+
+dependencies:
+  flutter:
+    sdk: flutter
+  url_launcher: ^6.1.6
+  radio_player: ^1.5.0
+  share_plus: ^7.2.1
+  provider: ^6.0.5
+  dart_common_utils: ^1.0.0
+  marquee: ^2.2.3
+  yandex_mobileads: ^6.0.1
+  google_fonts: ^6.1.0
+  flutter_native_splash: ^2.2.16
+  flutter_markdown: ^0.6.15
+  firebase_core: ^2.17.0
+  http: ^1.1.0
+  flutter_screenutil: ^5.9.0
+  firebase_analytics: ^10.5.1
+  firebase_performance: ^0.9.2+7
+  audioplayers: ^5.2.1
+  percent_indicator: ^4.2.3
+  flutter_riverpod: ^2.4.6
+  file_picker: ^6.1.1
+  fpdart: ^0.5.0
+  firebase_storage: ^11.0.16
+  cloud_firestore: ^4.4.5
+
+
+
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+ 
+
+
+  flutter_lints: ^3.0.0
+
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/images/
+    - assets/text/
+    - assets/icons/
+    - assets/text/
+  fonts:
+    - family: Oswald
+      fonts:
+        - asset: assets/fonts/google_fonts/Oswald.ttf
+    
+  
+
+
+  
+  
+flutter_native_splash:
+  color: '#18212d'
+  image: assets/images/logodark.png
+
+
+  android: true
+  ios: true
+  web: false
+
+flutter_icons: # flutter pub run flutter_launcher_icons:main
+  image_path: "assets/images/appicon.png"
+  android: true
+  ios: true
+  

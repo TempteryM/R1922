@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "666557472258",
+    "firebase_url": "https://radio-1922-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "radio-1922",
+    "storage_bucket": "radio-1922.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:666557472258:android:89e047dbae1017278f111b",
+        "android_client_info": {
+          "package_name": "com.gds.radio1922"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "666557472258-85olid88kbt2eau7uo33dn54p1eecm0v.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDR2s63QFmVIbWxffvIzLAwrbvvBWre1EI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "666557472258-85olid88kbt2eau7uo33dn54p1eecm0v.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "666557472258-1b67idt9c6k19etjk6eoj86ou5ol7m9e.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.gds.radio1922"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
