@@ -23,7 +23,7 @@ const albumCover = true;
 const pageYoutube = 'youtube.com/channel/UCo6q0vPPUNJauqzqzwrCiMw';
 
 //Page Vk
-const pageVk = 'vk.com/radio1922';
+const pageVk = 'vk.com/kbvolna';
 
 //User Tg
 const userTg = 't.me/kbvolna';

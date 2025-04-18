@@ -19,84 +19,81 @@ class PlayerScreenModel with ChangeNotifier {
   String get track => metadata?[1] ?? appDescription;
 
   PlayerScreenModel() {
-    //Itunes Album
+    // Инициализация iTunes Artwork Parser
+    _radioPlayer.itunesArtworkParser(true);
 
-    if (true) {
-      _radioPlayer.itunesArtworkParser(true);
-    }
-
+    // Установка канала
     _radioPlayer
         .setChannel(
-            title: appNameScreen,
-            url: linkStream,
-            imagePath: 'assets/images/logo.png')
+      title: appNameScreen,
+      url: linkStream,
+      imagePath: 'assets/images/logo.png',
+    )
         .then((_) {
       if (autoplay) play();
-
       notifyListeners();
     });
 
+    // Подписка на поток метаданных
     _radioPlayer.metadataStream.listen((value) async {
       metadata = value;
 
-      if (albumCover) artwork = await _radioPlayer.getArtworkImage();
+      if (albumCover) {
+        artwork = await _radioPlayer.getArtworkImage();
+      }
 
       notifyListeners();
     });
 
+    // Подписка на поток состояния воспроизведения
     _radioPlayer.stateStream.listen((state) {
-      if (isPlaying == state) return;
-
-      isPlaying = state;
-
-      isPlaying ? _onPlay() : _onPause();
+      if (isPlaying != state) {
+        isPlaying = state;
+        isPlaying ? _onPlay() : _onPause();
+      }
     });
   }
 
   void play() {
     isPlaying = true;
-
     _radioPlayer.play();
-
     _onPlay();
   }
 
   void pause() {
     isPlaying = false;
-
     _radioPlayer.pause();
-
     _onPause();
-
     _reset();
   }
 
   void _onPlay() {
     notifyListeners();
-
     _metadataService?.start();
   }
 
   void _onPause() {
     notifyListeners();
-
-    _reset();
+    // Здесь можно оставить только вызов notifyListeners()
+    // без вызова reset(), если это не требуется.
   }
 
   void _reset() {
     artwork = Image.asset('assets/images/logo.png');
 
+    // Остановка сервиса метаданных и сброс канала
     _metadataService?.stop();
 
-    _radioPlayer.stop();
+    // Сброс метаданных
+    metadata = [appNameScreen, appDescription];
 
+    // Установка канала с новыми значениями
     _radioPlayer.setChannel(
-        title: appDescription,
-        url: linkStream,
-        imagePath: 'assets/images/logo.png');
+      title: appDescription,
+      url: linkStream,
+      imagePath: 'assets/images/logo.png',
+    );
 
-    metadata?[0] = appNameScreen;
-
-    metadata?[1] = appDescription;
+    notifyListeners(); // Не забудьте уведомить слушателей о изменениях.
   }
 }

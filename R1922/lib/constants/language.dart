@@ -3,6 +3,7 @@ class Language {
   static const aboutUs = 'О Нас';
   static const newsView = 'ГЛАВНЫЕ КРАСНО-БЕЛЫЕ НОВОСТИ';
   static const matchData = 'РАСПИСАНИЕ МАТЧЕЙ';
+  static const newsSpartak = 'НОВОСТИ «СПАРТАК»';
   static const rateUs = 'Rate Us';
   static const privacyPolicy = 'Privacy Policy';
   static const privacyPolicyClose = 'Close';

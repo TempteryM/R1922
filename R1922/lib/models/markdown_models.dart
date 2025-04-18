@@ -37,7 +37,6 @@ class Markdown extends StatelessWidget {
             ),
             Row(
               children: [
-                const Spacer(),
                 TextButton(
                   child: const Text(Language.privacyPolicyClose),
                   onPressed: () {
@@ -69,7 +68,7 @@ class MarkdownText extends StatelessWidget {
 
     if (textStyle != null) {
       // ignore: deprecated_member_use
-      textTheme = TextTheme(bodyText2: Theme.of(context).textTheme.bodySmall);
+      textTheme = TextTheme(bodyMedium: Theme.of(context).textTheme.bodySmall);
     }
 
     return FutureBuilder<String>(

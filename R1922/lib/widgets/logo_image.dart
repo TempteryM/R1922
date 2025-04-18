@@ -1,18 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class LogogImag extends StatefulWidget {
-  const LogogImag({super.key});
+class LogoImage extends StatefulWidget {
+  const LogoImage({Key? key}) : super(key: key);
 
   @override
-  State<LogogImag> createState() => LogogImagState();
+  State<LogoImage> createState() => LogoImageState();
 }
 
-class LogogImagState extends State<LogogImag> {
+class LogoImageState extends State<LogoImage> {
   @override
   Widget build(BuildContext context) {
-    ScreenUtil.init(context, designSize: const Size(360, 690));
-
     return Container(
       decoration: BoxDecoration(
         boxShadow: [
@@ -36,10 +34,13 @@ class LogogImagState extends State<LogogImag> {
           decoration: const BoxDecoration(
             shape: BoxShape.circle,
           ),
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(180.0.h),
+          child: ClipOval(
             child: Image.asset(
               'assets/images/logo.png',
+              fit: BoxFit.cover, // Подгонка изображения по размеру
+              errorBuilder: (context, error, stackTrace) {
+                return const Center(child: Text('Image not found'));
+              },
             ),
           ),
         ),

@@ -19,22 +19,19 @@ class CustomBackgroundAppState extends State<CustomBackgroundApp> {
       width: double.maxFinite,
       height: double.maxFinite,
       decoration: BoxDecoration(
-        color: Theme.of(context).colorScheme.onBackground,
         gradient: LinearGradient(
           tileMode: TileMode.clamp,
           colors: [
+            Theme.of(context).colorScheme.background, //
             Theme.of(context).colorScheme.onBackground,
-            Theme.of(context).colorScheme.surface,
-            Theme.of(context).colorScheme.secondary,
+            Theme.of(context).colorScheme.background, //
           ],
-          stops: [2.h, 0.5.h, 2.h],
-          begin: Alignment.bottomCenter,
-          end: Alignment.topCenter,
+          stops: [0.0, 0.5, 1.0], // Позиции цветов на градиенте
+          begin: Alignment.centerLeft, // Начало градиента с левой стороны
+          end: Alignment.centerRight, // Конец градиента с правой стороны
         ),
       ),
-      child: SingleChildScrollView(
-          padding: EdgeInsets.symmetric(horizontal: 0.h, vertical: 0.h),
-          child: widget.child),
+      child: widget.child,
     );
   }
 }

@@ -1,49 +1,51 @@
-name: radio1922
+name: com.gds.radio1922
 description: Radio App.
 publish_to: 'Global Day Studio'
-version: 1.1.3+13
+version: 1.1.4+14
 
 environment:
-  sdk: '>=3.1.0 <4.0.0'
-
+  sdk: '>=3.5.3 <4.0.0'
 
 dependencies:
   flutter:
     sdk: flutter
-  url_launcher: ^6.1.6
+  url_launcher: ^6.3.1
   radio_player: ^1.5.0
-  share_plus: ^7.2.1
+  share_plus: ^10.1.2
   provider: ^6.0.5
   dart_common_utils: ^1.0.0
   marquee: ^2.2.3
-  yandex_mobileads: ^6.0.1
+  yandex_mobileads: ^7.9.1
   google_fonts: ^6.1.0
   flutter_native_splash: ^2.2.16
-  flutter_markdown: ^0.6.15
-  firebase_core: ^2.17.0
+  flutter_markdown: ^0.7.1
   http: ^1.1.0
   flutter_screenutil: ^5.9.0
-  firebase_analytics: ^10.5.1
-  firebase_performance: ^0.9.2+7
-  audioplayers: ^5.2.1
+  audioplayers: ^6.0.0
   percent_indicator: ^4.2.3
   flutter_riverpod: ^2.4.6
-  file_picker: ^6.1.1
-  fpdart: ^0.5.0
-  firebase_storage: ^11.0.16
-  cloud_firestore: ^4.4.5
-
-
-
+  file_picker: ^8.0.3
+  fpdart: ^1.1.0
+  flutter_bloc: ^8.1.3
+  timer_builder: ^2.0.0
+  intl: ^0.19.0
+  dio: ^5.7.0
+  easy_localization: ^3.0.4
+  hive_flutter: ^1.1.0
+  hive: ^2.2.3
+  shared_preferences: ^2.5.1
+  path_provider: ^2.0.0
+  hive_generator: ^2.0.1
+ 
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
- 
 
-
-  flutter_lints: ^3.0.0
-
+  flutter_lints: ^5.0.0
+  build_runner: ^2.4.13
+  mobx_codegen: ^2.7.0
+  
 
 flutter:
   uses-material-design: true
@@ -56,16 +58,10 @@ flutter:
     - family: Oswald
       fonts:
         - asset: assets/fonts/google_fonts/Oswald.ttf
-    
-  
 
-
-  
-  
 flutter_native_splash:
   color: '#18212d'
   image: assets/images/logodark.png
-
 
   android: true
   ios: true
@@ -75,4 +71,5 @@ flutter_icons: # flutter pub run flutter_launcher_icons:main
   image_path: "assets/images/appicon.png"
   android: true
   ios: true
-  
+flutter_intl:
+  enabled: true

@@ -2,12 +2,14 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
-import 'package:radio1922/widgets/Football_match.dart';
-import 'package:radio1922/widgets/hockey_match.dart';
+import 'package:yandex_mobileads/mobile_ads.dart';
+import 'football/Football_match.dart';
+import 'hockey/hockey_match.dart';
+import '../providers/navbar_provider.dart';
 import '../constants/language.dart';
 
 class MatchViewScreen extends StatefulWidget {
-  const MatchViewScreen({Key? key}) : super(key: key);
+  const MatchViewScreen({super.key});
   static const routeName = '/match';
 
   @override
@@ -16,11 +18,20 @@ class MatchViewScreen extends StatefulWidget {
 
 class MatchViewScreenState extends State<MatchViewScreen> {
   set launched(Future<void> launched) {}
+
   late final viewModel = Provider.of<MatchViewScreen>(context, listen: true);
 
   @override
   void initState() {
     super.initState();
+    MobileAds.initialize();
+
+    if (this.mounted) {
+      // check whether the state object is in tree
+      setState(() {
+        // make changes here
+      });
+    }
   }
 
   @override
@@ -33,6 +44,25 @@ class MatchViewScreenState extends State<MatchViewScreen> {
   @override
   void dispose() {
     super.dispose();
+  }
+
+  void someAsyncOperation() async {
+    if (mounted) {
+      setState(() {});
+    }
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    // Инициализация ScreenUtil здесь
+    ScreenUtil.init(context, designSize: const Size(360, 690));
+  }
+
+  void onItemTapped(int index) {
+    setState(() {
+      Provider.of<NavbarProvider>(context, listen: false).selectedIndex = index;
+    });
   }
 
   @override
@@ -49,13 +79,14 @@ class MatchViewScreenState extends State<MatchViewScreen> {
           centerTitle: true,
           titleTextStyle: Theme.of(context).textTheme.titleLarge,
           backgroundColor: Theme.of(context).colorScheme.secondary,
-          elevation: 0,
           flexibleSpace: Container(
             alignment: Alignment.center,
             decoration: BoxDecoration(
               boxShadow: [
                 BoxShadow(
-                    color: Colors.black, spreadRadius: 0.9.h, blurRadius: 5.h),
+                    color: Theme.of(context).colorScheme.onBackground,
+                    spreadRadius: 0.0.h,
+                    blurRadius: 0.h),
               ],
               color: Theme.of(context).colorScheme.primary,
               gradient: LinearGradient(
@@ -74,22 +105,33 @@ class MatchViewScreenState extends State<MatchViewScreen> {
           ),
           bottom: TabBar(
             dividerHeight: 25.w,
-            indicatorPadding: EdgeInsets.zero,
             dividerColor: Colors.grey[300],
             indicatorColor: Colors.transparent,
             unselectedLabelColor: Colors.black,
             labelStyle: Theme.of(context).textTheme.titleMedium,
             tabs: [
-              _textFootball(context),
-              _textHockey(context),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  Expanded(child: _textFootball(context)),
+                ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Expanded(child: _textHockey(context)),
+                ],
+              ),
             ],
           ),
         ),
-        body: const SafeArea(
+        body: SafeArea(
           child: TabBarView(
             children: [
-              FootballMatch(),
-              HockeyMatch(),
+              FootballMatchScreen(),
+              HockeyMatchScreen(),
             ],
           ),
         ),
@@ -100,12 +142,12 @@ class MatchViewScreenState extends State<MatchViewScreen> {
 
 Widget _textTitleBar(context) {
   return Text(Language.matchData,
-      style: Theme.of(context).textTheme.titleLarge);
+      style: Theme.of(context).textTheme.labelLarge);
 }
 
 Widget _textFootball(context) {
   return Row(
-    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    mainAxisAlignment: MainAxisAlignment.start,
     crossAxisAlignment: CrossAxisAlignment.center,
     mainAxisSize: MainAxisSize.min,
     children: [
@@ -118,7 +160,7 @@ Widget _textFootball(context) {
       ),
       const Text(
         'ФУТБОЛ',
-        textAlign: TextAlign.center,
+        textAlign: TextAlign.start,
       ),
     ],
   );
@@ -126,7 +168,7 @@ Widget _textFootball(context) {
 
 Widget _textHockey(context) {
   return Row(
-    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    mainAxisAlignment: MainAxisAlignment.end,
     crossAxisAlignment: CrossAxisAlignment.center,
     mainAxisSize: MainAxisSize.min,
     children: [
@@ -139,7 +181,7 @@ Widget _textHockey(context) {
       ),
       const Text(
         'ХОККЕЙ',
-        textAlign: TextAlign.center,
+        textAlign: TextAlign.start,
       ),
     ],
   );

@@ -1,0 +1,2 @@
+D:/Project/flutter2/NewRadio1922/New/5/radio1922/android/app/.cxx/Debug/52xa4q1r/x86/CMakeFiles/edit_cache.dir
+D:/Project/flutter2/NewRadio1922/New/5/radio1922/android/app/.cxx/Debug/52xa4q1r/x86/CMakeFiles/rebuild_cache.dir
